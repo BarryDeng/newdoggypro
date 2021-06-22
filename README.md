@@ -1,57 +1,30 @@
-# Ant Design Pro
+# MyDoggyPro
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+基于ReactJS和Gin的一个简单猜图游戏。
 
-## Environment Prepare
+## 构建方式
 
-Install `node_modules`:
+需要事先安装好NodeJS环境、NPM和yarn以生成前端，并安装有Golang 1.16工具链，go mod处于auto或者on状态（`go env -w GO111MODULE=of`）。
 
-```bash
-npm install
+```
+$ cd web
+$ yarn
+$ npm run build
+$ cd ../
+$ go mod download
+$ go build
 ```
 
-or
+安装MySQL数据库，root密码设置为`123456`，并创建一个名为`demo`的Schema。
 
-```bash
-yarn
+# 运行方式
+
+Windows下
+```powershell
+.\newdoggypro.exe
 ```
 
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
-
+Linux、MacOS下
 ```bash
-npm start
+./newdoggypro
 ```
-
-### Build project
-
-```bash
-npm run build
-```
-
-### Check code style
-
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
