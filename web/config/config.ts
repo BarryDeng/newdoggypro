@@ -49,6 +49,9 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
+  history: {
+    type: 'hash',
+  },
   // Fast Refresh 热更新
   fastRefresh: {},
   openAPI: [

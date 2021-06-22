@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-contrib/sessions"
@@ -50,8 +49,6 @@ func main() {
 	router.GET("/api/currentUser", func(c *gin.Context) {
 		session := sessions.Default(c)
 
-		fmt.Printf("%v\n", session)
-
 		if session.Get("User") == nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
 				"data": gin.H{
@@ -72,8 +69,6 @@ func main() {
 	router.POST("/api/login/account", func(c *gin.Context) {
 		session := sessions.Default(c)
 
-		fmt.Printf("%v\n", session)
-
 		var loginInfo user
 		if err := c.BindJSON(&loginInfo); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
@@ -83,16 +78,15 @@ func main() {
 		}
 
 		if loginInfo.Username == "admin" && loginInfo.Password == "admin" {
+			session.Set("User", "admin")
+			session.Save()
+
 			c.JSON(http.StatusOK, gin.H{
 				"status":           "ok",
 				"type":             loginInfo.Type,
 				"currentAuthority": "admin",
 			})
-			session.Set("User", "admin")
-			err := session.Save()
-			if err != nil {
-				fmt.Errorf("%v", err)
-			}
+
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{
