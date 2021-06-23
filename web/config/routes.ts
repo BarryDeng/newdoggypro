@@ -25,7 +25,7 @@
     path: '/print',
     name: 'print',
     icon: 'smile',
-    component: './print',
+    component: './Print',
   },
   {
     path: '/admin',
